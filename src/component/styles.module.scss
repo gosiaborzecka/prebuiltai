@@ -1,0 +1,29 @@
+.buttons {
+    button{
+        width: 220px;
+            height: 50px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            margin-left: 1rem;
+    }
+    .pink {
+        color: #fff;
+        background: linear-gradient(45deg, #ff00c8, #ff0000);
+    }
+    .green {
+        color: #fff;
+        background: linear-gradient(45deg, #00ffd5, #07b39b);
+    }
+    .blue {
+        color: #fff;
+        background: linear-gradient(45deg, #05a3ff, #00ffd5);
+    }
+    .yellow {
+        color: #fff;
+        background: linear-gradient(45deg, #05a3ff, #00ffd5);
+    }
+}
