@@ -20,11 +20,19 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+## Copy the client to the staging directory
 - task: CopyFiles@2
   inputs:
-    contents: '_buildOutput/**'
-    targetFolder: $(Build.ArtifactStagingDirectory)
-- task: PublishBuildArtifacts@1
+    sourceFolder: '$(buildOutputFolder)' 
+    contents: '**/*' 
+    targetFolder: '$(Build.ArtifactStagingDirectory)/drop'
+    cleanTargetFolder: true
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: 'drop'
+    SourceFolder: '$(buildOutputFolder)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
