@@ -1,5 +1,5 @@
-# Node.js with React
-# Build a Node.js project that uses React.
+# Node.js
+# Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -9,6 +9,10 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  projectFolder: 'src'
+  buildOutputFolder: 'public'
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -16,10 +20,8 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-
+    pushd $(projectFolder) && npm install && popd
+    pushd $(projectFolder) && npm run build && popd
 ## Copy the client to the staging directory
 - task: CopyFiles@2
   inputs:
